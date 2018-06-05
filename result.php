@@ -2,14 +2,15 @@
 
 /*
 
-Template Name: result
+Template Name: result12
 
 */
     get_header();
 ?>
 <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
-<?php include 'connect.php';
+<?php
+// include 'connect.php';
 $cat1=$_SESSION['max1'];
 $cat2=$_SESSION['max2'];
 
@@ -25,20 +26,21 @@ for( $i = 1; $i<16; $i++ ) {
     $var1[$i]=$_POST[$i];
     $var[$i]=$_POST['sd'.$i];
 
-    if($var1[$i]=='1' && $var[$i]=='1')
+    if($var1[$i]=='realist' && $var[$i]=='1')
         {
         $realist++;
     }
-    elseif($var1[$i]=='2' && $var[$i]=='1'){
+    elseif($var1[$i]=='investigativ' && $var[$i]=='1'){
         $investigativ++;
     }
-    elseif($var1[$i]=='3' && $var[$i]=='1'){
+    elseif($var1[$i]=='artistic' && $var[$i]=='1'){
         $artistic++;
-    }elseif($var1[$i]=='4' && $var[$i]=='1'){
+    }elseif($var1[$i]=='social' && $var[$i]=='1'){
        $social++;
-    }elseif($var1[$i]=='5' && $var[$i]=='1'){
+    }elseif($var1[$i]=='inteprinzator' && $var[$i]=='1'){
         $inteprinzator++;
-    }elseif($var1[$i]=='6' && $var[$i]=='1'){
+    }elseif($var1[$i]=='conventional
+' && $var[$i]=='1'){
         $conventional++;
     }
  
@@ -170,34 +172,102 @@ foreach($array as $key => $value){
 // echo "Max1=".$sub1;
 // echo "<br />"; 
 // echo "Smax1=".$sub_1."<br>";
-// echo $sub_1='1'."<br>";
+// //echo $sub_1='1'."<br>";
 // //echo $sub_2."<br>";
-// echo $cat1."<br>".$cat2;
+// echo $cat1."<br>".$cat2;  
 
 $cat1 = trim($cat1);
 $cat2 = trim($cat2);
 
- $state=$_SESSION['state'];
- $difficulty=$_SESSION['diff'];
 
 
-$sql="SELECT `uni_id`, `univercity_name`, `faculty_id` FROM `univercity` WHERE state_id='$state' && category_id IN(select category_id from category where category_name IN ('$cat1','$cat2')) && subcategory IN (select subcategory_id from subcategory where subcategory_name IN('$sub1','$sub1')) &&   dificulty_id='$difficulty' ";
+$_SESSION['fincat1']=$cat1;
+$_SESSION['fincat2']=$cat2;
+$_SESSION['finsubcat1']=$sub1;
+$_SESSION['finsubcat1']=$sub_1;
+
+  $state=$_SESSION['state'];
+  $difficulty=$_SESSION['diff'];
+
+//state value get
+
+ $state_val='';
+  if($state=='1')
+  {
+    $state_val='state';
+  }else
+  {
+     $state_val='privat';
+  }
+
+  //difficulty value get
+$diff_val='';
+  if($difficulty==0){
+$diff_val=array('low 2');
+  }elseif($difficulty==1){
+$diff_val=array('low 1','low 2');
+    }elseif($difficulty==2){
+$diff_val=array('med 1','med 2','high 1');
+      }elseif($difficulty==3){
+$diff_val=array('med 2','high 2','high 2');
+        }elseif($difficulty==4){
+
+          }
+
+$args = array( 'post_type' => 'universities', 'posts_per_page' => 100,'tax_query' => array(array(
+            'taxonomy' => 'Categories',
+            'field' => 'slug',
+            'terms' =>array($cat1,$cat2,$sub1,$sub_1)
+        ), ), );
+    $loop = new WP_Query( $args );
+echo "<div class='main-body-part'><form action=' http://192.168.1.2/edu/result/' method='POST'>";
 echo "<table border='1'>";
 echo "<tr><th>Univercity</th><th>Faculty</th></tr>";
-mysqli_set_charset($con,"utf8");
-$resu=mysqli_query($con,$sql);
+    while ( $loop->have_posts() ) : $loop->the_post();?>
+ <?php 
+                $terms = get_the_terms( $post->ID, 'Faculty' );
+                        
+                    if ( $terms && ! is_wp_error( $terms ) ) : 
+
+                $portfolio = array();
+            
+                foreach ( $terms as $term ) {
+                    $portfolio[] = $term->name;
+                }
+                                    
+                $portfolio_category = join( " | ", $portfolio );
+            ?>
+            
+                <h5 id="Proj_Categories"><ul>
+                   <tr><td> <?php echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?></td><td>
+                    <?php echo $term->name ?></td>
+                </ul></h5>
+            
+            <?php $d++; endif; ?>
+ 
+ <?php endwhile;?>
+
+ <?php
+
+// $sql="SELECT `uni_id`, `univercity_name`, `faculty_id` FROM `univercity` WHERE state_id='$state' && category_id IN(select category_id from category where category_name IN ('$cat1','$cat2')) && subcategory IN (select subcategory_id from subcategory where subcategory_name IN('$sub1','$sub1')) &&   dificulty_id='$difficulty' ";
+
+// mysqli_set_charset($con,"utf8");
+// $resu=mysqli_query($con,$sql);
     
-while($row=mysqli_fetch_array($resu)){
-echo"<tr><td>" .$row['univercity_name'];
-echo"</td><td>".$row['faculty_id']."</td></tr>";
-}echo "</table>";
+// while($row=mysqli_fetch_array($resu)){
+// echo"<tr><td>" .$row['univercity_name'];
+// echo"</td><td>".$row['faculty_id']."</td></tr>";
+// }
+echo "</table>";
+echo "</form>";
 
 
 ?>
-<form class="form-inline" method="post" action="">
+<form class="form-inline" method="post" action=" http://13.56.215.142/edumatch/pdf/">
 <button type="submit" id="pdf" name="generate_pdf" class="btn btn-primary"><i class="fa fa-pdf"" aria-hidden="true"></i>
 Generate PDF</button>
 </form>
+
 
         </main><!-- #main -->
     </div><!-- #primary -->

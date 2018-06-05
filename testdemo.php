@@ -11,24 +11,23 @@ Template Name: testdemo
 
 
 	<div id="primary" class="content-area">
-<?php
-$args = array( 'post_type' => 'question', 'posts_per_page' => 10, );
-    $loop = new WP_Query( $args );
+<?php 
+$myquery['tax_query'] = array(
+    array(
+        'taxonomy' => 'Categories',
+        'terms' => array('national'),
+        'field' => 'slug',
+    ),
+    array(
+        'taxonomy' => 'Categories',
+        'terms' => array('ecologic'),
+        'field' => 'slug',
+    ),
+);
+query_posts($myquery);
+ while ( $loop->have_posts() ) : $loop->the_post();
+?>
 
-    while ( $loop->have_posts() ) : $loop->the_post();?>
- <?php
-                $terms = get_the_terms( $post->ID, 'Categories' );
-                        
-                    if ( $terms && ! is_wp_error( $terms ) ) : 
-
-                $portfolio = array();
-            
-                foreach ( $terms as $term ) {
-                    $portfolio[] = $term->name;
-                }
-                                    
-                $portfolio_category = join( " | ", $portfolio );
-            ?>
             
                 <h3 id="Proj_Categories"><ul>
                     <?php echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>

@@ -68,7 +68,8 @@ Template Name: first
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 			<div class="main-body-part">
-			<form action=" http://13.56.215.142/edumatch/exam2/" method="POST">
+			<!-- <form action="http://192.168.1.2/edu/diff/" method="POST"> -->
+				<form action='http://13.56.215.142/edumatch/exam2/' method='POST'>
 				<div class="question">
      Te tenteaza sistemul educational de stat, mai mult decat cel privat?</div>
 <div class="radio_btn">

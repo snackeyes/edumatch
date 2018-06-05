@@ -69,7 +69,7 @@ Template Name: categ
 		<main id="main" class="site-main" role="main">
 
 		<?php	
-include 'connect.php';
+//include 'connect.php';
 		//include 'connect.php';
 
 
@@ -79,15 +79,18 @@ $_SESSION['x']=$_POST['sd3'];
 $_SESSION['z']=$_POST['sd4'];
 
 
-	/*echo $w."<br>";*/
-	//echo $_SESSION['v']."<br>";
-	/*echo $x."<br>";
-		echo $z."<br>";*/
+	// echo $w."<br>";
+	// echo $_SESSION['v']."<br>";
+	// echo $x."<br>";
+	// 	echo $z."<br>";
 		
 $var=$_SESSION['w']+$_SESSION['v']+$_SESSION['x']+$_SESSION['z'];
 //echo $var;
 
 switch ($var) {
+    case 0:
+    $_SESSION['diff']=0;
+        break;
     case 1:
         //echo "dificulty level is 1 ";
     $_SESSION['diff']=1;
@@ -114,23 +117,72 @@ switch ($var) {
 
 
 
-$sql="select * from quetions where category_id LIKE '1%' OR category_id LIKE '2%' OR category_id LIKE '3%' OR category_id LIKE '4%' OR category_id LIKE '5%'";
-//$que=mysqli_query($con,$sql);
- $resu=mysqli_query($con,$sql);
- mysqli_set_charset($con,"utf8");
- $d=1;
+// $sql="select * from quetions where category_id LIKE '1%' OR category_id LIKE '2%' OR category_id LIKE '3%' OR category_id LIKE '4%' OR category_id LIKE '5%'";
+// //$que=mysqli_query($con,$sql);
+//  $resu=mysqli_query($con,$sql);
+//  mysqli_set_charset($con,"utf8");
+//  $d=1;
 
 echo "<div class='main-body-part'><form action='http://13.56.215.142/edumatch/exam4/' method='POST'>";
- while($row=mysqli_fetch_array($resu)){
- 	$ff='sd'.$d;
- 	$fg='bh'.$d;
-echo "<div class='question'>".$row['quetion']."<br/>";
-echo "<input type='text' name=".$d." value=".$row['category_id']." style='display:none' >";
-echo "<div class='radio_btn'><input type='radio' name=".$ff." value='1' class='radio_btn1' required>Yes<input type='radio' name=".$ff." value='0' class='radio_btn1'>No</div></div>";
-$d++;
- }
-echo "<input type='submit' name='category' value='Next' class='next-btn'>";
-echo "</form></div>";?>
+//  while($row=mysqli_fetch_array($resu)){
+//  	$ff='sd'.$d;
+//  	$fg='bh'.$d;
+// echo "<div class='question'>".$row['quetion']."<br/>";
+// echo "<input type='text' name=".$d." value=".$row['category_id']." style='display:none' >";
+// echo "<div class='radio_btn'><input type='radio' name=".$ff." value='1' class='radio_btn1' required>Yes<input type='radio' name=".$ff." value='0' class='radio_btn1'>No</div></div>";
+// $d++;
+//  }
+// echo "<input type='submit' name='category' value='Next' class='next-btn'>";
+// echo "</form></div>";
+
+
+$d=1;
+
+$args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => array(array(
+            'taxonomy' => 'Categories',
+            'field' => 'slug',
+            'terms' =>array('ecologic','national','real','talent','uman')
+        ), ), );
+    $loop = new WP_Query( $args );
+// echo "<div class='main-body-part'><form action='http://192.168.1.2/edu/subcat/' method='POST'>";
+    while ( $loop->have_posts() ) : $loop->the_post();?>
+ <?php $ff='sd'.$d;
+                $terms = get_the_terms( $post->ID, 'Categories' );
+                        
+                    if ( $terms && ! is_wp_error( $terms ) ) : 
+
+                $portfolio = array();
+            
+                foreach ( $terms as $term ) {
+                    $portfolio[] = $term->name;
+                }
+                                    
+                $portfolio_category = join( " | ", $portfolio );
+            ?>
+            
+                <h5 id="Proj_Categories"><ul>
+                    <?php echo $d.". ";echo'<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
+                    <?php //echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
+                </ul></h5>
+            <div class="radio_btn">
+              <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
+    <input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required>Yes<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required>No</div>
+            <?php $d++; endif; ?>
+ 
+ <?php endwhile;?>
+ <input type='submit' name='' value='Next' class="next-btn">
+</form>
+
+
+
+
+
+
+
+
+
+
+
 
 
 		</main><!-- #main -->
