@@ -62,6 +62,9 @@ Template Name: subcat2
 */
 get_header();
 ?>
+<?php if ( Woocommerce_Pay_Per_Post_Helper::has_access() ): ?>
+    
+
 <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
 
@@ -420,6 +423,9 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
 
         </main><!-- #main -->
     </div><!-- #primary -->
+    <?php else: ?>
+    <?php echo Woocommerce_Pay_Per_Post_Helper::get_no_access_content(); ?>
+<?php endif; ?>
 
 <?php get_footer(); ?>
 

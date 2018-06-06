@@ -63,6 +63,8 @@ Template Name: first
 	get_header();
 ?>
 
+<?php if ( Woocommerce_Pay_Per_Post_Helper::has_access() ): ?>
+    
 
 
 	<div id="primary" class="content-area">
@@ -70,8 +72,8 @@ Template Name: first
 			<div class="main-body-part">
 			<!-- <form action="http://192.168.1.2/edu/diff/" method="POST"> -->
 				<form action='http://13.56.215.142/edumatch/exam2/' method='POST'>
-				<div class="question">
-     Te tenteaza sistemul educational de stat, mai mult decat cel privat?</div>
+				<div class=""><h5 id="Proj_Categories"><ul>
+     1).Te tenteaza sistemul educational de stat, mai mult decat cel privat?</ul></h5></div>
 <div class="radio_btn">
     <input type='radio' name="first" value='1' class="radio_btn1" required>Yes<input type='radio' name="first" value='2' class="radio_btn1" required>No</div>
     <input type='submit' name='' value='Next' class="next-btn">
@@ -80,6 +82,9 @@ Template Name: first
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
+	<?php else: ?>
+    <?php echo Woocommerce_Pay_Per_Post_Helper::get_no_access_content(); ?>
+<?php endif; ?>
 
 <?php get_footer(); ?>
 

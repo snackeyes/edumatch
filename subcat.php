@@ -62,6 +62,9 @@ Template Name: subcate
 */
    get_header();
 ?>
+<?php if ( Woocommerce_Pay_Per_Post_Helper::has_access() ): ?>
+    
+
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
 
@@ -112,6 +115,81 @@ $var[$i]=$_POST['sd'.$i];
 // echo $tal."<br>";
 // echo $uma."<br>";
 
+
+
+
+//conflicts logic
+
+if($rea=='5' && $nat=='5' && $eco=='5' && $tal=='5' && $uma=='5'){
+    
+    
+$array = "real,ecologic,national,talent,uman";
+?>
+<div id="content"></div>
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var array       = '<?php echo $array;?>';
+        
+        $.ajax({
+            url: "http://13.56.215.142/edumatch/wp-content/themes/sydney/page-templates/6.php",
+            type: "POST",
+            data:  {array: array}, 
+            success: function(response) {
+                $("#content").html(response);
+            }
+        });
+    });
+
+    $(document).on('click','.remove',function(){
+        var array = $(this).data("array");
+        var category = $(this).data("category");
+
+        $.ajax({
+            url: "http://13.56.215.142/edumatch/wp-content/themes/sydney/page-templates/6.php",
+            type: "POST",
+            data:  {array:array, category:category}, 
+            success: function(response) {
+                $("#content").html(response);
+            }
+        });
+    });
+</script>
+
+   
+  <?php  }elseif($rea==$nat){
+           
+            }elseif ($rea==$eco) {
+                        
+                }
+        elseif ($rea==$tal) {
+               
+               
+        }
+        elseif ($rea==$uma) {
+           
+        }
+        elseif ($nat==$eco) {
+               
+        }
+        elseif ($nat==$tal) {
+                   
+               
+        }
+        elseif ($nat==$uma) {
+                
+        }
+        elseif ($eco==$tal) {
+                
+        }
+        elseif ($eco==$uma) {
+               
+        }
+        elseif ($tal==$uma) {
+                
+               
+        }
+
+   /*
 $array= array("ecologic" => $eco, " 
 National" => $nat, "Real" => $rea, "Talent"=> $tal, "Uman" => $uma);
 $max_1 = $max_2 = 0;
@@ -171,196 +249,6 @@ foreach($array as $key => $value){
 $_SESSION['max1']=$key_1;
 $_SESSION['max2']=$key_2;
 
-
-
-/*
-//conflicts logic
-if($rea=='5' && $nat=='5' && $eco=='5' && $tal=='5' && $uma=='5'){
-    
-    $sql="select * from quetions where conflicts_id in('1','2','3')";
-
-    $resu=mysqli_query($con,$sql);
-    $d=1;
-
-        echo "<form action='concal.php' method='POST'>";
-    while($row=mysqli_fetch_array($resu)){
-        $ff='con'.$d;
-        $fg='bh'.$d;
-        echo $row['quetion']."<br/>";
-        echo "<input type='text' name=".$d." value=".$row['conflicts_id']." style='display:none' >";
-        echo "<input type='radio' name=".$ff." value='1' >yes<input type='radio' name=".$ff." value='0'>no<br/>";
-            $d++;
-        }
-    echo "<input type='submit' name='conf1' value='Next'>";
-    echo "</form>";
-    }elseif($rea==$nat){
-            $sql="select * from quetions where conflicts_id ='2'";
-            $resu=mysqli_query($con,$sql);
-            $d=1;
-            echo "<form action='concal.php' method='POST'>";
-        while($row=mysqli_fetch_array($resu)){
-                $ff='sd'.$d;
-                $fg='bh'.$d;
-                echo $row['quetion']."<br/>";
-                echo "<input type='text' name=".$d." value=".$row['conflicts_id']." style='display:none' >";
-                echo "<input type='radio' name=".$ff." value='1' >yes<input type='radio' name=".$ff." value='0'>no<br/>";
-                        $d++;
-            }
-            echo "<input type='submit' name='category' value='Next'>";
-            echo "</form>";
-            }elseif ($rea==$eco) {
-                        $sql="select * from quetions where conflicts_id='1'";
-                        $resu=mysqli_query($con,$sql);
-                        $d=1;
-                        echo "<form action='concal.php' method='POST'>";
-                while($row=mysqli_fetch_array($resu)){
-                    $ff='sd'.$d;
-                    $fg='bh'.$d;
-                            echo $row['quetion']."<br/>";
-                            echo "<input type='text' name=".$d." value=".$row['conflicts_id']." style='display:none' >";
-                            echo "<input type='radio' name=".$ff." value='1' >yes<input type='radio' name=".$ff." value='0'>no<br/>";
-                            $d++;
-                        }
-                    echo "<input type='submit' name='category' value='Next'>";
-                    echo "</form>";
-                }
-        elseif ($rea==$tal) {
-                $sql="select * from quetions where conflicts_id='3'";
-                $resu=mysqli_query($con,$sql);
-                $d=1;
-                echo "<form action='concal.php'='' method='POST'>";
-            while($row=mysqli_fetch_array($resu)){
-                $ff='sd'.$d;
-                $fg='bh'.$d;
-                echo $row['quetion']."<br/>";
-                echo "<input type='text' name=".$d." value=".$row['conflicts_id']." style='display:none' >";
-                echo "<input type='radio' name=".$ff." value='1' >yes<input type='radio' name=".$ff." value='0'>no<br/>";
-                $d++;
-                }
-            echo "<input type='submit' name='category' value='Next'>";
-            echo "</form>";
-        }
-        elseif ($rea==$uma) {
-            $sql="select * from quetions where conflicts_id='4'";
-            $resu=mysqli_query($con,$sql);
-            $d=1;
-            echo "<form action='concal.php' method='POST'>";
-        while($row=mysqli_fetch_array($resu)){
-                $ff='sd'.$d;
-                $fg='bh'.$d;
-                echo $row['quetion']."<br/>";
-                echo "<input type='text' name=".$d." value=".$row['conflicts_id']." style='display:none' >";
-                echo "<input type='radio' name=".$ff." value='1' >yes<input type='radio' name=".$ff." value='0'>no<br/>";
-                $d++;
-            }
-        echo "<input type='submit' name='category' value='Next'>";
-        echo "</form>";    
-        }
-        elseif ($nat==$eco) {
-                $sql="select * from quetions where conflicts_id='5'";
-                $resu=mysqli_query($con,$sql);
-                $d=1;
-                echo "<form action='concal.php'='' method='POST'>";
-            while($row=mysqli_fetch_array($resu)){
-                $ff='sd'.$d;
-                $fg='bh'.$d;
-                echo $row['quetion']."<br/>";
-                echo "<input type='text' name=".$d." value=".$row['conflicts_id']." style='display:none' >";
-                echo "<input type='radio' name=".$ff." value='1' >yes<input type='radio' name=".$ff." value='0'>no<br/>";
-                $d++;
-                }
-                echo "<input type='submit' name='category' value='Next'>";
-                echo "</form>";
-            }
-            elseif ($nat==$tal) {
-                    $sql="select * from quetions where conflicts_id='6'";
-                    $resu=mysqli_query($con,$sql);
-                    $d=1;
-                    echo "<form action='concal.php' method='POST'>";
-                while($row=mysqli_fetch_array($resu)){
-                    $ff='sd'.$d;
-                    $fg='bh'.$d;
-                    echo $row['quetion']."<br/>";
-                    echo "<input type='text' name=".$d." value=".$row['conflicts_id']." style='display:none' >";
-                    echo "<input type='radio' name=".$ff." value='1' >yes<input type='radio' name=".$ff." value='0'>no<br/>";
-                    $d++;
-                }
-                echo "<input type='submit' name='category' value='Next'>";
-                echo "</form>";
-            }
-            elseif ($nat==$uma) {
-                $sql="select * from quetions where conflicts_id ='7'";
-
-                $resu=mysqli_query($con,$sql);
-                $d=1;
-                echo "<form action='concal.php' method='POST'>";
-                while($row=mysqli_fetch_array($resu)){
-                    $ff='sd'.$d;
-                    $fg='bh'.$d;
-                    echo $row['quetion']."<br/>";
-                    echo "<input type='text' name=".$d." value=".$row['conflicts_id']." style='display:none' >";
-                    echo "<input type='radio' name=".$ff." value='1' >yes<input type='radio' name=".$ff." value='0'>no<br/>";
-                    $d++;
-                }
-                echo "<input type='submit' name='category' value='Next'>";
-                echo "</form>";
-            }
-            elseif ($eco==$tal) {
-                $sql="select * from quetions where conflicts_id ='8'";
-
-                $resu=mysqli_query($con,$sql);
-                $d=1;
-
-                echo "<form action='concal.php' method='POST'>";
-                while($row=mysqli_fetch_array($resu)){
-                    $ff='sd'.$d;
-                    $fg='bh'.$d;
-                    echo $row['quetion']."<br/>";
-                    echo "<input type='text' name=".$d." value=".$row['conflicts_id']." style='display:none' >";
-                    echo "<input type='radio' name=".$ff." value='1' >yes<input type='radio' name=".$ff." value='0'>no<br/>";
-                    $d++;
-                }
-                echo "<input type='submit' name='category' value='Next'>";
-                echo "</form>";
-            }
-            elseif ($eco==$uma) {
-                $sql="select * from quetions where conflicts_id ='9'";
-
-                $resu=mysqli_query($con,$sql);
-                $d=1;
-
-                echo "<form action='concal.php' method='POST'>";
-                while($row=mysqli_fetch_array($resu)){
-                    $ff='sd'.$d;
-                    $fg='bh'.$d;
-                    echo $row['quetion']."<br/>";
-                    echo "<input type='text' name=".$d." value=".$row['conflicts_id']." style='display:none' >";
-                    echo "<input type='radio' name=".$ff." value='1' >yes<input type='radio' name=".$ff." value='0'>no<br/>";
-                    $d++;
-                }
-                echo "<input type='submit' name='category' value='Next'>";
-                echo "</form>";
-            }
-            elseif ($tal==$uma) {
-                $sql="select * from quetions where conflicts_id ='10'";
-
-                $resu=mysqli_query($con,$sql);
-                $d=1;
-
-                echo "<form action='concal.php' method='POST'>";
-                while($row=mysqli_fetch_array($resu)){
-                    $ff='sd'.$d;
-                    $fg='bh'.$d;
-                    echo $row['quetion']."<br/>";
-                    echo "<input type='text' name=".$d." value=".$row['conflicts_id']." style='display:none' >";
-                    echo "<input type='radio' name=".$ff." value='1' >yes<input type='radio' name=".$ff." value='0'>no<br/>";
-                    $d++;
-                }
-                echo "<input type='submit' name='category' value='Next'>";
-                echo "</form>";
-            }
-*/
-   
 
 
 
@@ -675,7 +563,7 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
 
 
 
-}    ?>
+}   */ ?>
 
 
         </main><!-- #main -->
@@ -688,6 +576,9 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
 
         </main><!-- #main -->
     </div><!-- #primary -->
+    <?php else: ?>
+    <?php echo Woocommerce_Pay_Per_Post_Helper::get_no_access_content(); ?>
+<?php endif; ?>
 
 <?php get_footer(); ?>
 

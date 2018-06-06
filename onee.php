@@ -63,6 +63,8 @@ Template Name: difff
 	get_header();
 ?>
 
+<?php if ( Woocommerce_Pay_Per_Post_Helper::has_access() ): ?>
+
 
 
 	<div id="primary" class="content-area">
@@ -103,8 +105,8 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 10,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 id="Proj_Categories"><ul>
-                    <?php echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
+                <h5 align="left" id="Proj_Categories"><ul>
+                    <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php //echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
@@ -122,6 +124,9 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 10,'tax_query' => 
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
+	<?php else: ?>
+    <?php echo Woocommerce_Pay_Per_Post_Helper::get_no_access_content(); ?>
+<?php endif; ?>
 
 <?php get_footer(); ?>
 
