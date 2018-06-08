@@ -5,7 +5,9 @@
 Template Name: pdf
 
 */
-    //get_header();
+    get_header();
+ob_clean();
+error_reporting(E_ERROR | E_PARSE);
 ?>
 <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
@@ -20,6 +22,9 @@ $cat1=$_SESSION['fincat1'];
 $cat2=$_SESSION['fincat2'];
 $sub1=$_SESSION['finsubcat1'];
 $sub_1=$_SESSION['finsubcat1'];
+$diff_val=$_SESSION['difff'];
+$state_val=$_SESSION['stata'];
+
 
 
 // $resu=mysqli_query($con,$sql);
@@ -28,11 +33,22 @@ $sub_1=$_SESSION['finsubcat1'];
 // while($row=mysqli_fetch_array($resu)){
 // $hh.="<tr><td>" .$row['univercity_name']."</td><td></td>".$row['faculty_id']."</tr>";
 // }echo "</table>";
-
-$args = array( 'post_type' => 'universities', 'posts_per_page' => 100,'tax_query' => array(array(
+ $city = array('Bucuresti','Cluj','Iasi' );
+foreach ($city as $key => $ress) {
+$args = array( 'post_type' => 'universities', 'posts_per_page' => 100,'tax_query' => array(
+    'relation' => 'AND',
+            array(
             'taxonomy' => 'Categories',
             'field' => 'slug',
             'terms' =>array($cat1,$cat2,$sub1,$sub_1)
+        ),array(
+            'taxonomy' => 'Difficuly',
+            'field' => 'slug',
+            'terms' =>$diff_val
+        ),array(
+            'taxonomy' => 'State/Private',
+            'field' => 'slug',
+            'terms' =>$state_val
         ), ), );
     $loop = new WP_Query( $args );
 echo "<div class='main-body-part'><form action=' http://192.168.1.2/edu/result/' method='POST'>";
@@ -42,7 +58,7 @@ echo "<div class='main-body-part'><form action=' http://192.168.1.2/edu/result/'
 $stri="<table border='1'><tr><th>Univercity</th><th>Faculty</th></tr>";
 
     while ( $loop->have_posts() ) : $loop->the_post();?>
- <?php 
+ <?php //echo $ress;
                 $terms = get_the_terms( $post->ID, 'Faculty' );
                         
                     if ( $terms && ! is_wp_error( $terms ) ) : 
@@ -54,7 +70,7 @@ $stri="<table border='1'><tr><th>Univercity</th><th>Faculty</th></tr>";
                 }
                                     
                 $portfolio_category = join( " | ", $portfolio );
-            ?>
+?>
             
                 <h5 id="Proj_Categories"><ul>
                    <tr><td> <?php '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?></td><td>
@@ -66,16 +82,19 @@ $stri="<table border='1'><tr><th>Univercity</th><th>Faculty</th></tr>";
  
  <?php endwhile;?>
 
-<?php
+<?php }
 $stri.="</table>";
+
+
 
 echo $stri;
 $mpdf = new \Mpdf\Mpdf();
-//$mpdf=new mPDF('win-1252','A4-L','','',5,5,5,5,5,5); 
-//$mpdf->allow_charset_conversion = true;
-//$mpdf->charset_in = 'iso-8859-4';
+$mpdf=new mPDF('win-1252','A4-L','','',5,5,5,5,5,5); 
+$mpdf->allow_charset_conversion = true;
+$mpdf->charset_in = 'iso-8859-4';
 $mpdf->WriteHTML("<html><body>".$stri."</body></html>");
-$mpdf->Output();
+$mpdf->Output('result.pdf','D');
+$mpdf->debug = true;
 ?>
       </main><!-- #main -->
     </div><!-- #primary -->

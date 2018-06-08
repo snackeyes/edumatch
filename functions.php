@@ -568,3 +568,12 @@ add_action('init','sess_start');
                     $woocommerce->cart->set_quantity ( $key, 1, true );
             }
     }
+
+add_filter( 'add_to_cart_text', 'woo_custom_product_add_to_cart_text' );            // < 2.1
+add_filter( 'woocommerce_product_add_to_cart_text', 'woo_custom_product_add_to_cart_text' );  // 2.1 +
+  
+function woo_custom_product_add_to_cart_text() {
+  
+    return __( 'Pay Fees', 'woocommerce' );
+  
+}

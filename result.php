@@ -81,36 +81,6 @@ foreach($array as $key => $value){
 
 
 
-
-
-// $array= array($eco,$nat,$rea,$tal,$uma);
-
-// $max_1 = $max_2 = 0;
-// $pos2=$pos1=0;
-
-// for($i=0; $i<count($array); $i++)
-// {
-//     if($array[$i] > $max_1)
-//     {
-//       $max_2 = $max_1;
-//       $max_1 = $array[$i];
-//       $pos1=$i;
-//     }
-//     else if($array[$i] > $max_2)
-//     {//$pos2=$i;
-//       $max_2 = $array[$i];
-//       $pos2=$i;
-//     }
-// }
-
-// echo "Max1=".$max_1;
-// echo "<br />"; 
-// echo "Smax1=".$max_2."<br>";
-// echo $sub1."<br>";
-// //echo $sub2."<br>";
-
-
-
 $realist1= $_SESSION['realist'];
 $investigativ1=  $_SESSION['investigativ'];
 $artistic1=   $_SESSION['artistic'];
@@ -146,42 +116,12 @@ foreach($array as $key => $value){
 }
 
 
-
-
-
-// $array= array($eco,$nat,$rea,$tal,$uma);
-
-// $max_1 = $max_2 = 0;
-// $pos2=$pos1=0;
-
-// for($i=0; $i<count($array); $i++)
-// {
-//     if($array[$i] > $max_1)
-//     {
-//       $max_2 = $max_1;
-//       $max_1 = $array[$i];
-//       $pos1=$i;
-//     }
-//     else if($array[$i] > $max_2)
-//     {//$pos2=$i;
-//       $max_2 = $array[$i];
-//       $pos2=$i;
-//     }
-// }
-
-// echo "Max1=".$sub1;
-// echo "<br />"; 
-// echo "Smax1=".$sub_1."<br>";
-// //echo $sub_1='1'."<br>";
-// //echo $sub_2."<br>";
-// echo $cat1."<br>".$cat2;  
-
 $cat1 = trim($cat1);
 $cat2 = trim($cat2);
 
 
 
-$_SESSION['fincat1']=$cat1;
+ $_SESSION['fincat1']=$cat1;
 $_SESSION['fincat2']=$cat2;
 $_SESSION['finsubcat1']=$sub1;
 $_SESSION['finsubcat1']=$sub_1;
@@ -194,34 +134,63 @@ $_SESSION['finsubcat1']=$sub_1;
  $state_val='';
   if($state=='1')
   {
-    $state_val='state';
+    $state_val='Stat';
   }else
   {
-     $state_val='privat';
+     $state_val='Privat';
   }
-
+$_SESSION['stata']=$state_val;
   //difficulty value get
 $diff_val='';
   if($difficulty==0){
 $diff_val=array('low 2');
+$_SESSION['difff']=$diff_val;
   }elseif($difficulty==1){
 $diff_val=array('low 1','low 2');
+$_SESSION['difff']=$diff_val;
     }elseif($difficulty==2){
 $diff_val=array('med 1','med 2','high 1');
+$_SESSION['difff']=$diff_val;
       }elseif($difficulty==3){
 $diff_val=array('med 2','high 2','high 2');
+$_SESSION['difff']=$diff_val;
         }elseif($difficulty==4){
 
           }
 
-$args = array( 'post_type' => 'universities', 'posts_per_page' => 100,'tax_query' => array(array(
+//echo $cat1.$cat2.$sub1.$sub_1.$diff_val.$state_val;
+
+
+
+          $city = array('Bucuresti','Cluj','Iasi' );
+foreach ($city as $key => $value) {
+
+  
+
+$args = array( 'post_type' => 'universities', 'posts_per_page' => 100,'tax_query' => array(
+   'relation' => 'AND',
+            array(
             'taxonomy' => 'Categories',
             'field' => 'slug',
             'terms' =>array($cat1,$cat2,$sub1,$sub_1)
-        ), ), );
+        ),array(
+            'taxonomy' => 'Difficuly',
+            'field' => 'slug',
+            'terms' =>$diff_val
+        ), array(
+            'taxonomy' => 'State/Private',
+            'field' => 'slug',
+            'terms' =>$state_val
+        ),array(
+            'taxonomy' => 'Town',
+            'field' => 'slug',
+            'terms' =>$value
+        ),), );
     $loop = new WP_Query( $args );
 echo "<div class='main-body-part'><form action=' http://192.168.1.2/edu/result/' method='POST'>";
+  
 echo "<table border='1'>";
+echo "<tr><th>".$value."</th></tr>";
 echo "<tr><th>Univercity</th><th>Faculty</th></tr>";
     while ( $loop->have_posts() ) : $loop->the_post();?>
  <?php 
@@ -237,9 +206,9 @@ echo "<tr><th>Univercity</th><th>Faculty</th></tr>";
                                     
                 $portfolio_category = join( " | ", $portfolio );
             ?>
-            
+          
                 <h5 id="Proj_Categories"><ul>
-                   <tr><td> <?php echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?></td><td>
+                   <tr><td> <?php  echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?></td><td>
                     <?php echo $term->name ?></td>
                 </ul></h5>
             
@@ -247,7 +216,7 @@ echo "<tr><th>Univercity</th><th>Faculty</th></tr>";
  
  <?php endwhile;?>
 
- <?php
+ <?php }
 
 // $sql="SELECT `uni_id`, `univercity_name`, `faculty_id` FROM `univercity` WHERE state_id='$state' && category_id IN(select category_id from category where category_name IN ('$cat1','$cat2')) && subcategory IN (select subcategory_id from subcategory where subcategory_name IN('$sub1','$sub1')) &&   dificulty_id='$difficulty' ";
 

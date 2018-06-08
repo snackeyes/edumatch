@@ -4,7 +4,7 @@
         text-align: center
     }
         .main-body-part{
-            width: 60%;
+            width: 80%;
             margin: 0 auto;
             background: #DAD9D9;
             min-height: 181px;
@@ -31,9 +31,10 @@
             text-align: left;
             width: 98%;
             margin: 0 auto;
+            padding-left: 45px;
         }
         .radio_btn1{
-            margin-left: 10px !important;
+            margin-left: 15px !important;
             margin-right: 7px !important;
         }
         .next-btn{
@@ -52,6 +53,53 @@
             color: #fff;
             opacity: 0.7;
         }
+        .container1 {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.container1 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+        margin-top: 8px;
+    margin-left: 9px;
+}
+.container1 input:checked ~ .checkmark {
+    background-color: #E44B53;
+        margin-top: 6px;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.container1 input:checked ~ .checkmark:after {
+    display: block;
+}
+.container1 .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
     </style>
 <?php
 
@@ -67,6 +115,7 @@ Template Name: subcate
 
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
+            <h2> Heading 1</h2>
 
 <?php   
 //include 'connect.php';
@@ -125,7 +174,7 @@ if($rea=='5' && $nat=='5' && $eco=='5' && $tal=='5' && $uma=='5'){
     
 $array = "real,ecologic,national,talent,uman";
 ?>
-<div id="content"></div>
+<div class='main-body-part'><div id="contents"></div>
 <script type="text/javascript">
     $( document ).ready(function() {
         var array       = '<?php echo $array;?>';
@@ -135,7 +184,7 @@ $array = "real,ecologic,national,talent,uman";
             type: "POST",
             data:  {array: array}, 
             success: function(response) {
-                $("#content").html(response);
+                $("#contents").html(response);
             }
         });
     });
@@ -149,49 +198,16 @@ $array = "real,ecologic,national,talent,uman";
             type: "POST",
             data:  {array:array, category:category}, 
             success: function(response) {
-                $("#content").html(response);
+                $("#contents").html(response);
             }
         });
     });
-</script>
+</script></div>
 
    
-  <?php  }elseif($rea==$nat){
-           
-            }elseif ($rea==$eco) {
-                        
-                }
-        elseif ($rea==$tal) {
-               
-               
-        }
-        elseif ($rea==$uma) {
-           
-        }
-        elseif ($nat==$eco) {
-               
-        }
-        elseif ($nat==$tal) {
-                   
-               
-        }
-        elseif ($nat==$uma) {
-                
-        }
-        elseif ($eco==$tal) {
-                
-        }
-        elseif ($eco==$uma) {
-               
-        }
-        elseif ($tal==$uma) {
-                
-               
-        }
-
-   /*
-$array= array("ecologic" => $eco, " 
-National" => $nat, "Real" => $rea, "Talent"=> $tal, "Uman" => $uma);
+  <?php  }else{
+            $array= array("ecologic" => $eco, " 
+national" => $nat, "real" => $rea, "talent"=> $tal, "uman" => $uma);
 $max_1 = $max_2 = 0;
 $key_1 = $key_2 = 0;
 
@@ -216,40 +232,8 @@ foreach($array as $key => $value){
     } 
 }
 
-
-
-
-
-// $array= array($eco,$nat,$rea,$tal,$uma);
-
-// $max_1 = $max_2 = 0;
-// $pos2=$pos1=0;
-
-// for($i=0; $i<count($array); $i++)
-// {
-//     if($array[$i] > $max_1)
-//     {
-//       $max_2 = $max_1;
-//       $max_1 = $array[$i];
-//       $pos1=$i;
-//     }
-//     else if($array[$i] > $max_2)
-//     {//$pos2=$i;
-//       $max_2 = $array[$i];
-//       $pos2=$i;
-//     }
-// }
-
-// echo "Max=".$max_1;
-// echo "<br />"; 
-// echo "Smax 2=".$max_2."<br>";
-// echo $key_1."<br>";
-// echo $key_2."<br>";
-
 $_SESSION['max1']=$key_1;
 $_SESSION['max2']=$key_2;
-
-
 
 
  //echo var_dump(trim($key_1));
@@ -258,25 +242,11 @@ $key_1 = trim($key_1);
 
 //$key_1='National';
 if($key_1 =='ecologic'){
- //    $sql="select * from quetions where subcategory_id in('1','2','5')";
- // mysqli_set_charset($con,"utf8");
- //    $resu=mysqli_query($con,$sql);
-   
- //    $d=1;?>
+ ?>
 
       <div class='main-body-part'><form action='http://13.56.215.142/edumatch/exam5/' method='POST'>
         <?php
- //    while($row=mysqli_fetch_array($resu)){
- //        $ff='sd'.$d;
- //        $fg='bh'.$d;
- //        echo "<div class='question'>".$row['quetion']."<br/>";
- //        echo "<input type='text' name=".$d." value=".$row['subcategory_id']." style='display:none' >";
- //        echo "<div class='radio_btn'><input type='radio' name=".$ff." value='1' class='radio_btn1' required>Yes<input type='radio' name=".$ff." value='0' class='radio_btn1'>No</div></div>";
- //            $d++;
- //        }
- //    echo "<input type='submit' name='category' value='Next' class='next-btn'>";
- //    echo "</form></div>";
-   // exit;
+ 
 
 $d=1;
 
@@ -302,13 +272,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 id="Proj_Categories"><ul>
+                <h5  align="left"id="Proj_Categories"><ul>
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php //echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
-            <div class="radio_btn">
+           <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required>Yes<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required>No</div>
+    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -319,26 +289,11 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
 <?php
 
 
-}elseif ($key_1 == "National"){
-    //echo "sk";
-//     $sql="select * from quetions where subcategory_id in('1','2','3')";
-//  mysqli_set_charset($con,"utf8");
-//     $resu=mysqli_query($con,$sql);
-   
-//     $d=1;
-// ?>
+}elseif ($key_1 == "national"){
+    
+ ?>
           <div class='main-body-part'><form action='http://13.56.215.142/edumatch/exam5/' method='POST'>             <?php
-//     while($row=mysqli_fetch_array($resu)){
-//         $ff='sd'.$d;
-//         $fg='bh'.$d;
-//         echo "<div class='question'>".$row['quetion']."<br/>";
-//         echo "<input type='text' name=".$d." value=".$row['subcategory_id']." style='display:none' >";
-//         echo "<div class='radio_btn'><input type='radio' name=".$ff." value='1' class='radio_btn1' required>Yes<input type='radio' name=".$ff." value='0' class='radio_btn1'>No</div></div>";
-//             $d++;
-//         }
-//     echo "<input type='submit' name='category' value='Next' class='next-btn'>";
-//     echo "</form></div>";
-    //exit;
+
 
 
 $d=1;
@@ -365,13 +320,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories"><ul>
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php //echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required>Yes<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required>No</div>
+    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -380,26 +335,11 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
 <?php
 
 
-}elseif ($key_1=='Real'){
-//     $sql="select * from quetions where subcategory_id in('4','2','6')";
-//    mysqli_set_charset($con,"utf8");
-//     $resu=mysqli_query($con,$sql);
- 
-//     $d=1;
-// ?>
+}elseif ($key_1=='real'){
+ ?>
         <div class='main-body-part'><form action='http://13.56.215.142/edumatch/exam5/' method='POST'>
          <?php
-//     while($row=mysqli_fetch_array($resu)){
-//         $ff='sd'.$d;
-//         $fg='bh'.$d;
-//         echo "<div class='question'>".$row['quetion']."<br/>";
-//         echo "<input type='text' name=".$d." value=".$row['subcategory_id']." style='display:none' >";
-//         echo "<div class='radio_btn'><input type='radio' name=".$ff." value='1' class='radio_btn1' required>Yes<input type='radio' name=".$ff." value='0' class='radio_btn1'>No</div></div>";
-//             $d++;
-//         }
-//     echo "<input type='submit' name='category' value='Next' class='next-btn'>";
-//     echo "</form></div>";
-   // exit;
+
 
 
 $d=1;
@@ -426,13 +366,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories"><ul>
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php //echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required>Yes<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required>No</div>
+    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -441,25 +381,9 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
 <?php
 
 
-}elseif ($key_1=='Talent'){
-//     $sql="select * from quetions where subcategory_id in('1','2','3')";
-//    mysqli_set_charset($con,"utf8");
-//     $resu=mysqli_query($con,$sql);
- 
-//     $d=1;
-// ?>
-//         <div class='main-body-part'><form action='http://13.56.215.142/edumatch/exam5/' method='POST'><?php
-//     while($row=mysqli_fetch_array($resu)){
-//         $ff='sd'.$d;
-//         $fg='bh'.$d;
-//         echo "<div class='question'>".$row['quetion']."<br/>";
-//         echo "<input type='text' name=".$d." value=".$row['subcategory_id']." style='display:none' >";
-//         echo "<div class='radio_btn'><input type='radio' name=".$ff." value='1' class='radio_btn1' required>Yes<input type='radio' name=".$ff." value='0' class='radio_btn1'>No</div></div>";
-//             $d++;
-//         }
-//     echo "<input type='submit' name='category' value='Next' class='next-btn'>";
-//     echo "</form></div>";
-  //  exit;
+}elseif ($key_1=='talent'){
+ ?>
+         <div class='main-body-part'><form action='http://13.56.215.142/edumatch/exam5/' method='POST'><?php
 
 
 $d=1;
@@ -486,13 +410,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories"><ul>
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php //echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required>Yes<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required>No</div>
+    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -501,27 +425,11 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
 <?php
 
 
-}elseif ($key_1=='Uman'){
-    // $sql="select * from quetions where subcategory_id in('1','2','3')";
-    // mysqli_set_charset($con,"utf8");
-    // $resu=mysqli_query($con,$sql);
-
-    // $d=1;
-
-    //     ?>
+}elseif ($key_1=='uman'){
+       ?>
      <div class='main-body-part'><form action='http://13.56.215.142/edumatch/exam5/' method='POST'>
           <?php
-    // while($row=mysqli_fetch_array($resu)){
-    //     $ff='sd'.$d;
-    //     $fg='bh'.$d;
-    //     echo "<div class='question'>".$row['quetion']."<br/>";
-    //     echo "<input type='text' name=".$d." value=".$row['subcategory_id']." style='display:none' >";
-    //     echo "<div class='radio_btn'><input type='radio' name=".$ff." value='1' class='radio_btn1' required>Yes<input type='radio' name=".$ff." value='0' class='radio_btn1'>No</div></div>";
-    //         $d++;
-    //     }
-    // echo "<input type='submit' name='category' value='Next' class='next-btn'>";
-    // echo "</form></div>";
-  //  exit;
+    
 
 $d=1;
 
@@ -547,13 +455,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories"><ul>
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php // echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required>Yes<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required>No</div>
+    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -563,7 +471,11 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
 
 
 
-}   */ ?>
+}
+        }
+
+   
+    ?>
 
 
         </main><!-- #main -->

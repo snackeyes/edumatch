@@ -4,7 +4,7 @@
     text-align: center
   }
     .main-body-part{
-      width: 60%;
+      width: 80%;
       margin: 6% auto;
       background: #DAD9D9;
       min-height: 181px;
@@ -29,8 +29,9 @@
     .radio_btn{
       vertical-align: top;
       text-align: left;
-        width: 98%;
+        width: 84%;
         margin: 0 auto;
+      /* padding-left: 5px;*/
     }
     .radio_btn1{
       margin-left: 10px !important;
@@ -52,6 +53,53 @@
       color: #fff;
       opacity: 0.7;
     }
+    .container1 {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.container1 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+        margin-top: 8px;
+    margin-left: 9px;
+}
+.container1 input:checked ~ .checkmark {
+    background-color: #E44B53;
+        margin-top: 6px;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.container1 input:checked ~ .checkmark:after {
+    display: block;
+}
+.container1 .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
   </style>
 <?php
 
@@ -69,6 +117,7 @@ Template Name: categ
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+      <h2> Heading 1</h2>
 
 		<?php	
 //include 'connect.php';
@@ -168,7 +217,7 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required>Yes<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required>No</div>
+    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
