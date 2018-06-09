@@ -1,10 +1,13 @@
 <style type="text/css">
+body{
+        font-family: "Raleway", sans-serif !important;
+}
     .title{
         margin-top: 0px;
         text-align: center
     }
         .main-body-part{
-            width: 80%;
+            width: 100%;
             margin: 0 auto;
             background: #DAD9D9;
             min-height: 181px;
@@ -29,9 +32,9 @@
         .radio_btn{
             vertical-align: top;
             text-align: left;
-            width: 98%;
+            width: 100%;
             margin: 0 auto;
-            padding-left: 45px;
+            padding-left: 30px;
         }
         .radio_btn1{
             margin-left: 15px !important;
@@ -99,6 +102,11 @@
   height: 8px;
   border-radius: 50%;
   background: white;
+}
+.text-font h5{
+    margin: 10px 0 10px !important;
+    font-weight: 0 !important;
+    font-size: 16px !important;
 }
     </style>
 
@@ -168,13 +176,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 align="left" id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories" style="font-weight: 300 !important;margin-bottom: 0px !important;"><ul style="margin-bottom: 0px !important;font-family: "Raleway", sans-serif !important;">
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php //echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -216,13 +224,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 align="left" id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories" style="font-weight: 300 !important;margin-bottom: 0px !important;"><ul style="margin-bottom: 0px !important;font-family: "Raleway", sans-serif !important;">
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php //echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -262,13 +270,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 align="left" id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories" style="font-weight: 300 !important;margin-bottom: 0px !important;"><ul style="margin-bottom: 0px !important;font-family: "Raleway", sans-serif !important;">
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php //echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -306,13 +314,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 align="left" id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories" style="font-weight: 300 !important;margin-bottom: 0px !important;"><ul style="margin-bottom: 0px !important;font-family: "Raleway", sans-serif !important;">
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php //echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -351,13 +359,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 align="left" id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories" style="font-weight: 300 !important;margin-bottom: 0px !important;"><ul style="margin-bottom: 0px !important;font-family: "Raleway", sans-serif !important;">
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php // echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
            <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -370,96 +378,93 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
 }
 
 
-
-
-
 }
 
 function real_ecologic($array){
-	echo "<h5 align='left' id='Proj_Categories'><ul>Preferi mai mult cifrele decat protejarea naturii?</h5></ul>";
-	echo "<br/>";
-	echo ' <div class="radio_btn"><label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="real" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
-	echo '<label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="ecologic" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
+	echo "<h5 align='left' id='Proj_Categories' style='font-weight: 300 !important;margin-bottom: 0px !important;'><ul style='margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;'>Preferi mai mult cifrele decat protejarea naturii?</h5></ul>";
+	echo "";
+	echo ' <div class="radio_btn"><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;" ><span class="checkmark"></span><input type="radio" name="question" value="real" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
+	echo '<label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="ecologic" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
 	exit;
 }
 
 function real_national($array){
-	echo "<h5 align='left' id='Proj_Categories'><ul>Preferi mai mult detaliile tehnice decat ai un program strict de lucru?</h5></ul>";
-	echo "<br/>";
-	echo ' <div class="radio_btn"><label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="real" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
-	echo '<label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="national" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
+	echo "<h5 align='left' id='Proj_Categories' style='font-weight: 300 !important;margin-bottom: 0px !important;'><ul style='margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;'>Preferi mai mult detaliile tehnice decat ai un program strict de lucru?</h5></ul>";
+	echo "";
+	echo ' <div class="radio_btn"><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="real" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
+	echo '<label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="national" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
 	exit;
 }
 
 function real_talent($array){
-	echo "<h5 align='left' id='Proj_Categories'><ul>Preferi mai mult cifrele decat sa canti la un instrument?</h5></ul>";
-	echo "<br/>";
-	echo ' <div class="radio_btn"><label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="real" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
-	echo '<label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="talent" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
+	echo "<h5 align='left' id='Proj_Categories' style='font-weight: 300 !important;margin-bottom: 0px !important;'><ul style='margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;'>Preferi mai mult cifrele decat sa canti la un instrument?</h5></ul>";
+	echo "";
+	echo ' <div class="radio_btn"><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="real" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
+	echo '<label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="talent" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
 	exit;
 }
 
 function real_uman($array){
-	echo "<h5 align='left' id='Proj_Categories'><ul>Preferi mai mult calculele decat sa analizezi aspectele vietii?</h5></ul>";
-	echo "<br/>";
-	echo ' <div class="radio_btn"><label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="real" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
-	echo '<label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="uman" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
+	echo "<h5 align='left' id='Proj_Categories' style='font-weight: 300 !important;margin-bottom: 0px !important;'><ul style='margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;'>Preferi mai mult calculele decat sa analizezi aspectele vietii?</h5></ul>";
+	echo "";
+	echo ' <div class="radio_btn"><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="real" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
+	echo '<label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="uman" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
 	exit;
 }
 
 function ecologic_national($array){
-	echo "<h5 align='left' id='Proj_Categories'><ul>Te preocupa mai mult securitatea nationala decat defrisarile si efectul lor asupra mediului?</h5></ul>";
-	echo "<br/>";
-	echo ' <div class="radio_btn"><label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="ecologic" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
-	echo '<label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="national" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
+	echo "<h5 align='left' id='Proj_Categories' style='font-weight: 300 !important;margin-bottom: 0px !important;'><ul style='margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;'>Te preocupa mai mult securitatea nationala decat defrisarile si efectul lor asupra mediului?</h5></ul>";
+	echo "";
+	echo ' <div class="radio_btn"><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="ecologic" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
+	echo '<label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="national" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
 	exit;
 }
 
 function national_ecologic($array){
 	echo "national ecologic";
-	echo "<br/>";
-	echo ' <div class="radio_btn"><label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="national" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
-	echo '<label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="ecologic" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
+	echo "";
+	echo ' <div class="radio_btn"><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="national" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
+	echo '<label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="ecologic" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
 	exit;
 }
 
 function national_talent($array){
-	echo "<h5 align='left' id='Proj_Categories'><ul>Preferi mai mult un program strict de lucru decat unul care implica un grad mare de creativitate?</h5></ul>";
+	echo "<h5 align='left' id='Proj_Categories' style='font-weight: 300 !important;margin-bottom: 0px !important;'><ul style='margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;'>Preferi mai mult un program strict de lucru decat unul care implica un grad mare de creativitate?</h5></ul>";
 	echo "";
-	echo ' <div class="radio_btn"><label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="national" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
-	echo '<label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="talent" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
+	echo ' <div class="radio_btn"><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="national" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
+	echo '<label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="talent" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
 	exit;
 }
 
 function national_uman($array){
-	echo "<h5 align='left' id='Proj_Categories'><ul>Te pasioneaza mai mult subiectele legate de spionaj decat sa analizezi aspectele vietii?</h5></ul>";
-	echo "<br/>";
-	echo ' <div class="radio_btn"><label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="national" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
-	echo '<label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="uman" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
+	echo "<h5 align='left' id='Proj_Categories' style='font-weight: 300 !important;margin-bottom: 0px !important;'><ul style='margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;'>Te pasioneaza mai mult subiectele legate de spionaj decat sa analizezi aspectele vietii?</h5></ul>";
+	echo "";
+	echo ' <div class="radio_btn"><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="national" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
+	echo '<label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="uman" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
 	exit;
 }
 
 function ecologic_talent($array){
-	echo "<h5 align='left' id='Proj_Categories'><ul>Preferi sa citesti despre poluare si combatarea ei mai mult decat sa studiezi muzica?</h5></ul>";
-	echo "<br/>";
-	echo ' <div class="radio_btn"><label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="ecologic" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
-	echo '<label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="talent" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
+	echo "<h5 align='left' id='Proj_Categories' style='font-weight: 300 !important;margin-bottom: 0px !important;'><ul style='margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;'>Preferi sa citesti despre poluare si combatarea ei mai mult decat sa studiezi muzica?</h5></ul>";
+	echo "";
+	echo ' <div class="radio_btn"><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="ecologic" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
+	echo '<label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="talent" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
 	exit;
 }
 
 function ecologic_uman($array){
-	echo "<h5 align='left' id='Proj_Categories'><ul>Te pasioneaza mai mult fauna si flora decat sa analizize relatiile interumane?</h5></ul>";
-	echo "<br/>";
-	echo ' <div class="radio_btn"><label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="ecologic" class="remove radio_btn1 radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
-	echo '<label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="uman" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
+	echo "<h5 align='left' id='Proj_Categories' style='font-weight: 300 !important;margin-bottom: 0px !important;'><ul style='margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;'>Te pasioneaza mai mult fauna si flora decat sa analizize relatiile interumane?</h5></ul>";
+	echo "";
+	echo ' <div class="radio_btn"><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="ecologic" class="remove radio_btn1 radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
+	echo '<label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="uman" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
 	exit;
 }
 
 function talent_uman($array){
-	echo "<h5 align='left' id='Proj_Categories'><ul>Preferi maimult sa canti la un instrument decat predai un anumit subiect?</h5></ul>";
-	echo "<br/>";
-	echo ' <div class="radio_btn"><label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="talent" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
-	echo '<label class="container1"><span class="checkmark"></span><input type="radio" name="question" value="uman" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
+	echo "<h5 align='left' id='Proj_Categories' style='font-weight: 300 !important;margin-bottom: 0px !important;'><ul style='margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;'>Preferi maimult sa canti la un instrument decat predai un anumit subiect?</h5></ul>";
+	echo "";
+	echo ' <div class="radio_btn"><label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="talent" class="remove radio_btn1" data-category="1" data-array="'.$array.'"> Yes';
+	echo '<label class="container1" style="font-weight: 300 !important;font-family: "Raleway", sans-serif !important;"><span class="checkmark"></span><input type="radio" name="question" value="uman" class="remove radio_btn1"  data-category="0" data-array="'.$array.'"> No</div>';
 	exit;
 }
 ?>

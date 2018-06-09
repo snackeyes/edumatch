@@ -1,3 +1,16 @@
+<style type="text/css">
+  body{
+    font-family: "Raleway", sans-serif !important; 
+  }
+  th{
+    background: #f3f0e1;
+  }
+  th, td{
+        border: 1px solid #890026 !important;
+  }
+
+</style>
+
 <?php
 
 /*
@@ -190,7 +203,7 @@ $args = array( 'post_type' => 'universities', 'posts_per_page' => 100,'tax_query
 echo "<div class='main-body-part'><form action=' http://192.168.1.2/edu/result/' method='POST'>";
   
 echo "<table border='1'>";
-echo "<tr><th>".$value."</th></tr>";
+echo "<tr><th colspan='2'>".$value."</th></tr>";
 echo "<tr><th>Univercity</th><th>Faculty</th></tr>";
     while ( $loop->have_posts() ) : $loop->the_post();?>
  <?php 
@@ -233,7 +246,7 @@ echo "</form>";
 
 ?>
 <form class="form-inline" method="post" action=" http://13.56.215.142/edumatch/pdf/">
-<button type="submit" id="pdf" name="generate_pdf" class="btn btn-primary"><i class="fa fa-pdf"" aria-hidden="true"></i>
+<button type="submit" id="pdf" name="generate_pdf" class="btn btn-primary pdf-margin"><i class="fa fa-pdf" aria-hidden="true"></i>
 Generate PDF</button>
 </form>
 

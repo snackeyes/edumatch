@@ -1,4 +1,7 @@
 <style type="text/css">
+body{
+        font-family: "Raleway", sans-serif !important;
+}
     .title{
         margin-top: 0px;
         text-align: center
@@ -6,7 +9,7 @@
         .main-body-part{
             width: 80%;
             margin: 0 auto;
-            background: #DAD9D9;
+            background: #fff;
             min-height: 181px;
             padding: 2%;
             text-align: center;
@@ -31,7 +34,7 @@
             text-align: left;
             width: 98%;
             margin: 0 auto;
-            padding-left: 45px;
+            padding-left: 40px;
         }
         .radio_btn1{
             margin-left: 15px !important;
@@ -81,7 +84,7 @@
     margin-left: 9px;
 }
 .container1 input:checked ~ .checkmark {
-    background-color: #E44B53;
+    background-color: #890026;
         margin-top: 6px;
 }
 .checkmark:after {
@@ -99,6 +102,14 @@
   height: 8px;
   border-radius: 50%;
   background: white;
+}
+.content-area h5{
+    margin: 10px 0 10px !important;
+    font-weight: 0 !important;
+    font-size: 16px !important;
+}
+label{
+    font-weight: 300 !important;
 }
     </style>
 <?php
@@ -195,13 +206,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 align="left" id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories" style="margin-bottom: 0px !important; font-size: 16px !important;font-weight: 300px !important;"><ul style="margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;font-weight: 300 !important;">
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php // echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" class="container1" style="font-weight: 300 !important;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" class="container1" style="font-weight: 300 !important;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -243,13 +254,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 align="left" id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories" style="margin-bottom: 0px !important; font-size: 16px !important;font-weight: 300px !important;"><ul style="margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;font-weight: 300 !important;">
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php // echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" class="container1" style="font-weight: 300 !important;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" class="container1" style="font-weight: 300 !important;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -288,13 +299,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 align="left"  align="left" id="Proj_Categories"><ul>
+                <h5 align="left"  align="left" id="Proj_Categories" style="margin-bottom: 0px !important; font-size: 16px !important;font-weight: 300px !important;"><ul style="margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;font-weight: 300 !important;">
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php// echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" class="container1" style="font-weight: 300 !important;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" class="container1" style="font-weight: 300 !important;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -333,13 +344,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 align="left" id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories" style="margin-bottom: 0px !important; font-size: 16px !important;font-weight: 300px !important;"><ul style="margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;font-weight: 300 !important;">
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php //echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" class="container1" style="font-weight: 300 !important;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" class="container1" style="font-weight: 300 !important;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -379,13 +390,13 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 $portfolio_category = join( " | ", $portfolio );
             ?>
             
-                <h5 align="left" id="Proj_Categories"><ul>
+                <h5 align="left" id="Proj_Categories" style="margin-bottom: 0px !important; font-size: 16px !important;font-weight: 300px !important;"><ul style="margin-bottom: 0px !important;font-family: 'Raleway', sans-serif !important;font-weight: 300 !important;">
                     <?php echo $d.". "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?>
                     <?php// echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.$term->name.'</a>'; ?>
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" class="container1" style="font-weight: 300 !important;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" class="container1" style="font-weight: 300 !important;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>

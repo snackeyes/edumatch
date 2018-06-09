@@ -1,12 +1,15 @@
 <style type="text/css">
+body{
+	    font-family: "Raleway", sans-serif !important;
+}
 	.title{
 		margin-top: 0px;
 		text-align: center
 	}
 		.main-body-part{
-			width: 80%;
-			margin: 6% auto;
-			background: #DAD9D9;
+			width: 100%;
+			margin: 0 auto;
+			background: #fff;
 			min-height: 181px;
 			padding: 2%;
 			text-align: center;
@@ -29,7 +32,7 @@
 		.radio_btn{
 			vertical-align: top;
 			text-align: left;
-    		width: 80%;
+    		width: 91%;
     		margin: 0 auto;
     		padding-left: 0px;
 		}
@@ -81,7 +84,7 @@
     margin-left: 9px;
 }
 .container1 input:checked ~ .checkmark {
-    background-color: #E44B53;
+    background-color: #890026;
         margin-top: 6px;
 }
 .checkmark:after {
@@ -100,7 +103,26 @@
 	border-radius: 50%;
 	background: white;
 }
+.text-font{
+	font-size: 16px !important;
+	font-weight: 300 !important;
+	margin: 10px 0 10px !important;
+}
+.text-font h5{
+	margin: 10px 0 10px !important;
+	font-weight: 0 !important;
+	font-size: 16px !important;
+}
+h1{
+	font-size: 30px;
+font-weight: 600;
+line-height: normal;
+padding-bottom: 10px;
+margin: 0;
+}
+
 	</style>
+}
 <?php
 
 /*
@@ -117,15 +139,15 @@ Template Name: first
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<h2> Heading 1</h2>
+			<h1 style="font-size: 30px !important;font-weight: 600 !important;line-height: normal !important;padding-bottom: 10px !important;margin: 0 !important;"> Heading 1</h1>
 			<div class="main-body-part">
 			<!-- <form action="http://192.168.1.2/edu/diff/" method="POST"> -->
 				<form action='http://13.56.215.142/edumatch/exam2/' method='POST'>
-				<div class=""><h5 align="left" id="Proj_Categories"><ul>
+				<div class="text-font"><h5 align="left" id="Proj_Categories" style="font-weight: 300 !important;margin-bottom: 0px !important;"><ul style="margin-bottom: 0px !important">
      1).Te tenteaza sistemul educational de stat, mai mult decat cel privat?</ul></h5></div>
 <div class="radio_btn">
-	<label class="container1">Yes
-    <input type='radio' name="first" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1">No<input type='radio' name="first" value='2' class="radio_btn1" required><span class="checkmark"></span></label></div>
+	<label class="container1" style="font-weight: 300 !important;">Yes
+    <input type='radio' name="first" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" style="font-weight: 300 !important;">No<input type='radio' name="first" value='2' class="radio_btn1" required><span class="checkmark"></span></label></div>
     <input type='submit' name='' value='Next' class="next-btn">
 </form>
 </div>

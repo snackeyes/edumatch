@@ -6,8 +6,7 @@ Template Name: pdf
 
 */
     get_header();
-ob_clean();
-error_reporting(E_ERROR | E_PARSE);
+require_once __DIR__ . '/vendor/autoload.php';
 ?>
 <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
@@ -90,8 +89,8 @@ $stri.="</table>";
 echo $stri;
 $mpdf = new \Mpdf\Mpdf();
 $mpdf=new mPDF('win-1252','A4-L','','',5,5,5,5,5,5); 
-$mpdf->allow_charset_conversion = true;
-$mpdf->charset_in = 'iso-8859-4';
+//$mpdf->allow_charset_conversion = true;
+//$mpdf->charset_in = 'iso-8859-4';
 $mpdf->WriteHTML("<html><body>".$stri."</body></html>");
 $mpdf->Output('result.pdf','D');
 $mpdf->debug = true;
