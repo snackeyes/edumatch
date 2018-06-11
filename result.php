@@ -23,7 +23,7 @@ Template Name: result12
 <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
 <?php
-// include 'connect.php';
+ include 'connect.php';
 $cat1=$_SESSION['max1'];
 $cat2=$_SESSION['max2'];
 
@@ -176,6 +176,7 @@ $_SESSION['difff']=$diff_val;
 
 
           $city = array('Bucuresti','Cluj','Iasi' );
+          $stri="<table border=1><tr><th colspan=2>".$value."</th></tr><tr><th>Univercity</th><th>Faculty</th></tr>";
 foreach ($city as $key => $value) {
 
   
@@ -205,6 +206,7 @@ echo "<div class='main-body-part'><form action=' http://192.168.1.2/edu/result/'
 echo "<table border='1'>";
 echo "<tr><th colspan='2'>".$value."</th></tr>";
 echo "<tr><th>Univercity</th><th>Faculty</th></tr>";
+
     while ( $loop->have_posts() ) : $loop->the_post();?>
  <?php 
                 $terms = get_the_terms( $post->ID, 'Faculty' );
@@ -224,6 +226,7 @@ echo "<tr><th>Univercity</th><th>Faculty</th></tr>";
                    <tr><td> <?php  echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?></td><td>
                     <?php echo $term->name ?></td>
                 </ul></h5>
+                <?php $stri.="<tr><td>" .get_the_title()."</td><td>".$term->name."</td></tr>";?>
             
             <?php $d++; endif; ?>
  
@@ -242,7 +245,19 @@ echo "<tr><th>Univercity</th><th>Faculty</th></tr>";
 // }
 echo "</table>";
 echo "</form>";
-
+ $stri.="</table>";
+  $current_user = wp_get_current_user();
+  $name=$current_user->user_login;
+  $email=$current_user->user_firstname;
+  $stri=trim(htmlspecialchars($stri));
+  //var_dump(htmlspecialchars($stri));
+  //echo "<br>";
+  $sql="INSERT INTO `result` VALUES (NULL,'$email','$stri',CURDATE(),'$name')";
+//echo $sql;//exit;
+$resu=mysqli_query($con,$sql);
+if($resu){
+ // echo $name;
+  }
 
 ?>
 <form class="form-inline" method="post" action=" http://13.56.215.142/edumatch/pdf/">
