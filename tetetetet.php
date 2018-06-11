@@ -9,7 +9,7 @@ Template Name: resumod
 ?>
 <?php include 'connect.php';
 
-$sql="Select * from result ";
+$sql="Select * from result where id='11'";
 $resu=mysqli_query($con,$sql);
  while($row=mysqli_fetch_array($resu)){
  	$ec=$row['result'];

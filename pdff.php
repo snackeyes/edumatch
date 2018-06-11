@@ -1,3 +1,7 @@
+<style type="text/css"> th, td{
+        border: 1px solid #890026 !important;
+            width: 50%;
+  }</style>
 <?php
 
 /*
@@ -33,7 +37,10 @@ $state_val=$_SESSION['stata'];
 // $hh.="<tr><td>" .$row['univercity_name']."</td><td></td>".$row['faculty_id']."</tr>";
 // }echo "</table>";
  $city = array('Bucuresti','Cluj','Iasi' );
-foreach ($city as $key => $ress) {
+$stri="";
+     
+foreach ($city as $key => $value) {
+
 $args = array( 'post_type' => 'universities', 'posts_per_page' => 100,'tax_query' => array(
     'relation' => 'AND',
             array(
@@ -48,13 +55,22 @@ $args = array( 'post_type' => 'universities', 'posts_per_page' => 100,'tax_query
             'taxonomy' => 'State/Private',
             'field' => 'slug',
             'terms' =>$state_val
+        ),array(
+            'taxonomy' => 'Town',
+            'field' => 'slug',
+            'terms' =>$value
         ), ), );
     $loop = new WP_Query( $args );
 echo "<div class='main-body-part'><form action=' http://192.168.1.2/edu/result/' method='POST'>";
 // echo "<table border='1'>";
 // echo "<tr><th>Univercity</th><th>Faculty</th></tr>";
-
-$stri="<table border='1'><tr><th>Univercity</th><th>Faculty</th></tr>";
+$stri.="<table border='1'><tr><th colspan='2' class='table-had' style='width:100%;'>".$value."</th></tr><tr><th>Univercity</th><th>Faculty</th></tr>";
+ if( $loop->have_posts() ){
+   // echo 'we have posts';
+} else {
+    echo "<tr><td colspan='2'>No Matching Result for your Choice</td></tr>";
+    $stri.="<tr><td colspan=2>No Matching Result for your Choice</td></tr>";
+}
 
     while ( $loop->have_posts() ) : $loop->the_post();?>
  <?php //echo $ress;
@@ -77,23 +93,27 @@ $stri="<table border='1'><tr><th>Univercity</th><th>Faculty</th></tr>";
                 </ul></h5>
                 <?php $stri.="<tr><td>" .get_the_title()."</td><td>".$term->name."</td></tr>";?>
             
-            <?php $d++; endif; ?>
+            <?php $d++;  endif; ?>
  
  <?php endwhile;?>
-
+<?php $stri.="</table>";?>
 <?php }
-$stri.="</table>";
+
 
 
 
 echo $stri;
+// $mpdf = new \Mpdf\Mpdf();
+// $mpdf=new mPDF('win-1252','A4-L','','',5,5,5,5,5,5); 
+// //$mpdf->allow_charset_conversion = true;
+// //$mpdf->charset_in = 'iso-8859-4';
+ 
+ 
+//$mpdf->debug = true;
 $mpdf = new \Mpdf\Mpdf();
-$mpdf=new mPDF('win-1252','A4-L','','',5,5,5,5,5,5); 
-//$mpdf->allow_charset_conversion = true;
-//$mpdf->charset_in = 'iso-8859-4';
+//$mpdf->WriteHTML('<h1>Hello world!</h1>');
 $mpdf->WriteHTML("<html><body>".$stri."</body></html>");
 $mpdf->Output('result.pdf','D');
-$mpdf->debug = true;
 ?>
       </main><!-- #main -->
     </div><!-- #primary -->

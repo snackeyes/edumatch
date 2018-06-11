@@ -253,6 +253,8 @@ $_SESSION['max2']=$key_2;
  //echo var_dump(trim($key_1));
 
 $key_1 = trim($key_1);
+// echo $key_1;
+// echo $key_2;
 
 //$key_1='National';
 if($key_1 =='ecologic'){
@@ -386,7 +388,7 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1" style="font-weight: 300px !important;font-size: 19px;>Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" style="font-weight: 300px !important;font-size: 19px;>No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" style="font-weight: 300px !important;font-size: 19px;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" style="font-weight: 300px !important;font-size: 19px;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -430,7 +432,7 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1" style="font-weight: 300px !important;font-size: 19px;>Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" style="font-weight: 300px !important;font-size: 19px;>No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" style="font-weight: 300px !important;font-size: 19px;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" style="font-weight: 300px !important;font-size: 19px;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>
@@ -475,7 +477,7 @@ $args = array( 'post_type' => 'question', 'posts_per_page' => 25,'tax_query' => 
                 </ul></h5>
             <div class="radio_btn">
               <input type='text' name="<?php echo $d?>" value="<?php echo $term->name?>" style='display:none' >
-    <label class="container1" style="font-weight: 300px !important;font-size: 19px;>Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" style="font-weight: 300px !important;font-size: 19px;>No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
+    <label class="container1" style="font-weight: 300px !important;font-size: 19px;">Yes<input type='radio' name="<?php echo $ff ?>" value='1' class="radio_btn1" required><span class="checkmark"></span></label><label class="container1" style="font-weight: 300px !important;font-size: 19px;">No<input type='radio' name="<?php echo $ff ?>" value='0' class="radio_btn1" required><span class="checkmark"></span></label></div>
             <?php $d++; endif; ?>
  
  <?php endwhile;?>

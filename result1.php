@@ -7,19 +7,15 @@
   }
   th, td{
         border: 1px solid #890026 !important;
-            width: 50%;
   }
- .table-had{
-    border: 1px solid #fff !important;
+  .table-had{
+  	border: 1px solid #fff !important;
     border-bottom: 1px solid #890026 !important;
     background: #fff;
     text-align: left;
     padding-top: 20px;
-    font-weight: 700;
-    color: #000;
 }
   }
-
 
 </style>
 
@@ -34,7 +30,7 @@ Template Name: result12
 ?>
 <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
-          <h1 style="font-size: 30px !important;font-weight: 600 !important;line-height: normal !important;padding-bottom: 10px !important;margin: 0 !important;"> Heading 1</h1>
+        	<h1 style="font-size: 30px !important;font-weight: 600 !important;line-height: normal !important;padding-bottom: 10px !important;margin: 0 !important;"> Heading 1</h1>
 <?php
  include 'connect.php';
 $cat1=$_SESSION['max1'];
@@ -88,7 +84,7 @@ $pos2 = $pos1=0;
 
 foreach($array as $key => $value){
 
-   //echo "<pre>"; print_r($value); print_r($key);exit;
+  // echo "<pre>"; print_r($value); print_r($key);exit;
 
   if($value > $max_1)
     {
@@ -178,11 +174,9 @@ $_SESSION['difff']=$diff_val;
 $diff_val=array('med 1','med 2','high 1');
 $_SESSION['difff']=$diff_val;
       }elseif($difficulty==3){
-$diff_val=array('med 2','med 1','high 2','high 2');
+$diff_val=array('med 2','high 2','high 2');
 $_SESSION['difff']=$diff_val;
         }elseif($difficulty==4){
-          $diff_val=array('med 1','high 2','high 2');
-$_SESSION['difff']=$diff_val;
 
           }
 
@@ -191,12 +185,12 @@ $_SESSION['difff']=$diff_val;
 
 
           $city = array('Bucuresti','Cluj','Iasi' );
-         
+          $stri="<table border=1><tr><th>Univercity</th><th>Faculty</th></tr>";
 foreach ($city as $key => $value) {
 
-  $d=1;
+  
 
-$args = array( 'post_type' => 'universities', 'posts_per_page' => 1000,'tax_query' => array(
+$args = array( 'post_type' => 'universities', 'posts_per_page' => 100,'tax_query' => array(
    'relation' => 'AND',
             array(
             'taxonomy' => 'Categories',
@@ -217,25 +211,15 @@ $args = array( 'post_type' => 'universities', 'posts_per_page' => 1000,'tax_quer
         ),), );
     $loop = new WP_Query( $args );
 echo "<div class='main-body-part'><form action=' http://192.168.1.2/edu/result/' method='POST'>";
-   $stri="<table border=1><tr><th colspan=2 class=table-had>".$value."</th></tr><tr><th>Univercity</th><th>Faculty</th></tr>";
+  
 echo "<table border='1'>";
 echo "<tr><th colspan='2' class='table-had'>".$value."</th></tr>";
 echo "<tr><th>Univercity</th><th>Faculty</th></tr>";
-$varr='';
-
- if( $loop->have_posts() ){
-   // echo 'we have posts';
-} else {
-    echo "<tr><td colspan='2'>No Matching Result for your Choice</td></tr>";
-    $stri.="<tr><td colspan=2>No Matching Result for your Choice</td></tr>";
-} 
 
     while ( $loop->have_posts() ) : $loop->the_post();?>
  <?php 
                 $terms = get_the_terms( $post->ID, 'Faculty' );
-                       
-                      
-
+                        
                     if ( $terms && ! is_wp_error( $terms ) ) : 
 
                 $portfolio = array();
@@ -245,12 +229,10 @@ $varr='';
                 }
                                     
                 $portfolio_category = join( " | ", $portfolio );
-          
-        
             ?>
-         
+          
                 <h5 id="Proj_Categories"><ul>
-                   <tr><td style="text-align: left"> <?php echo $d."). "; echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?></td><td style="text-align: left">
+                   <tr><td> <?php  echo '<a href="http://www.slarc.com/projects/'.$term->slug.'">'.the_title().'</a>'; ?></td><td>
                     <?php echo $term->name ?></td>
                 </ul></h5>
                 <?php $stri.="<tr><td>" .get_the_title()."</td><td>".$term->name."</td></tr>";?>
@@ -279,7 +261,7 @@ echo "</form>";
   $stri=trim(htmlspecialchars($stri));
   //var_dump(htmlspecialchars($stri));
   //echo "<br>";
-  $sql="INSERT INTO `result` VALUES (NULL,'$email','$stri',NOW(),'$name')";
+  $sql="INSERT INTO `result` VALUES (NULL,'$email','$stri',CURDATE(),'$name')";
 //echo $sql;//exit;
 $resu=mysqli_query($con,$sql);
 if($resu){

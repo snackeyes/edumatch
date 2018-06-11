@@ -9,7 +9,7 @@ body{
         .main-body-part{
             width: 100%;
             margin: 0 auto;
-            background: #DAD9D9;
+            background: #fff;
             min-height: 181px;
             padding: 2%;
             text-align: center;
@@ -34,7 +34,7 @@ body{
             text-align: left;
             width: 100%;
             margin: 0 auto;
-            padding-left: 30px;
+            padding-left: 50px;
         }
         .radio_btn1{
             margin-left: 15px !important;
@@ -84,7 +84,7 @@ body{
     margin-left: 9px;
 }
 .container1 input:checked ~ .checkmark {
-    background-color: #E44B53;
+    background-color: #890026;
         margin-top: 6px;
 }
 .checkmark:after {

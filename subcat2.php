@@ -7,7 +7,7 @@ body{
         text-align: center
     }
         .main-body-part{
-            width: 80%;
+            width: 100%;
             margin: 0 auto;
             background: #fff;
             min-height: 181px;
@@ -111,6 +111,56 @@ body{
 label{
     font-weight: 300 !important;
 }
+.progressbar {
+      counter-reset: step;
+
+  }
+  .progressbar li {
+      list-style-type: none;
+      width: 16%;
+      float: left;
+      font-size: 12px;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      color: #7d7d7d;
+  }
+  .progressbar li:before {
+      width: 30px;
+      height: 30px;
+      content: counter(step);
+      counter-increment: step;
+      line-height: 26px;
+      border: 2px solid #7d7d7d;
+      display: block;
+      text-align: center;
+      margin: 0 auto 10px auto;
+      border-radius: 50%;
+      background-color: white;
+  }
+  .progressbar li:after {
+      width: 82%;
+      height: 3px;
+      content: '';
+      position: absolute;
+      background-color: #890026 !important;
+      top: 15px;
+      left: -41%;
+      z-index: 0;
+  }
+  .progressbar li:first-child:after {
+      content: none;
+  }
+  .progressbar li.active {
+      color: green;
+  }
+  .progressbar li.active:before {
+      border-color: #55b776;
+  }
+  .progressbar li.active + li:after {
+      background-color: #55b776;
+  }
+
     </style>
 <?php
 
@@ -126,6 +176,15 @@ get_header();
 
 <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
+            <ul style="text-align: center;" class="progressbar">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="active"></li>
+        <li></li>
+    </ul>
+            <h2 style="font-size: 30px !important;font-weight: 600 !important;line-height: normal !important;padding-bottom: 10px !important;margin: 0 !important;"> Heading 1</h2>
 
 <?php
 //include 'connect.php';
